@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NV Jayasri - Data Scientist</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         :root {
             --primary: #2563eb;
@@ -26,14 +29,31 @@
             min-height: 100vh;
         }
 
-        .container { max-width: 1200px; margin: auto; padding: 20px; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
         header {
-            background: rgba(255,255,255,0.95);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         nav {
@@ -59,32 +79,87 @@
             text-decoration: none;
             color: var(--dark);
             font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .hero {
-            background: linear-gradient(135deg, rgba(37,99,235,.95), rgba(30,64,175,.95));
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.95) 0%, rgba(30, 64, 175, 0.95) 100%);
             color: white;
             padding: 6rem 2rem;
             text-align: center;
             border-radius: 20px;
             margin: 2rem 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease;
         }
 
-        .hero h1 { font-size: 3.5rem; }
-        .hero p { font-size: 1.4rem; margin: 1rem 0 2rem; }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: slideUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: slideUp 0.8s ease 0.4s both;
+        }
 
         .hero-buttons {
             display: flex;
-            justify-content: center;
             gap: 1rem;
+            justify-content: center;
+            animation: slideUp 0.8s ease 0.6s both;
         }
 
         .btn {
             padding: 1rem 2rem;
+            border: none;
             border-radius: 50px;
-            text-decoration: none;
+            font-size: 1rem;
             font-weight: 600;
-            transition: 0.3s;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn-primary {
@@ -92,161 +167,490 @@
             color: var(--primary);
         }
 
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid white;
-            color: white;
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
-        .btn:hover { transform: translateY(-3px); }
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
 
         .content-section {
             background: white;
             border-radius: 20px;
             padding: 3rem;
             margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .section-title {
             font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
         }
 
         .education-item, .project-item {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             padding: 1.5rem;
-            background: var(--light);
             border-left: 4px solid var(--primary);
+            background: var(--light);
             border-radius: 10px;
+            transition: all 0.3s;
         }
 
-        .skills-grid, .achievements-grid, .contact-info {
+        .education-item:hover, .project-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        .education-item h3, .project-item h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item p, .project-item p {
+            color: var(--gray);
+            margin: 0.3rem 0;
+        }
+
+        .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
+            margin-top: 2rem;
         }
 
-        .skill-card, .achievement-card, .contact-card {
+        .skill-card {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
             padding: 2rem;
             border-radius: 15px;
             text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .achievement-card {
             background: var(--light);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .achievement-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .achievement-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card:hover i {
+            color: white;
         }
 
         footer {
-            background: rgba(30,41,59,.95);
+            background: rgba(30, 41, 59, 0.95);
             color: white;
             text-align: center;
             padding: 2rem;
-            border-radius: 20px;
             margin-top: 3rem;
+            border-radius: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
         }
 
         .social-links a {
             color: white;
             font-size: 1.5rem;
-            margin: 0 1rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.2);
+            color: var(--accent);
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1rem; }
-            .hero-buttons { flex-direction: column; }
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+            }
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-to-top:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
         }
     </style>
 </head>
-
 <body>
-<header>
-    <nav>
-        <div class="logo">NV JAYASRI</div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+    <header>
+        <nav>
+            <div class="logo">NV JAYASRI</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<div class="container">
+    <div class="container">
+        <section class="hero">
+            <h1>NV JAYASRI</h1>
+            <p>Data Scientist | Machine Learning Enthusiast | Bharatanatyam World Record Holder</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="mailto:jayasrinavaneethan2004@gmail.com" class="btn btn-secondary">Download CV</a>
+            </div>
+        </section>
 
-    <section class="hero">
-        <h1>NV JAYASRI</h1>
-        <p>Data Scientist | Machine Learning Enthusiast | Bharatanatyam World Record Holder</p>
-        <div class="hero-buttons">
-            <a href="#contact" class="btn btn-primary">Get In Touch</a>
+        <section id="about" class="content-section">
+            <h2 class="section-title">About Me</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--gray);">
+                Detail-oriented data scientist seeking to apply strong skills in data analysis to uncover actionable insights and support strategic decision-making. Eager to collaborate with a dynamic team and contribute to driving business success while continuously growing professionally. Currently pursuing 5-year Integrated M.Sc. in Data Science at Amrita Vishwa Vidyapeetham, Coimbatore.
+            </p>
+        </section>
 
-            <!-- ✅ FIXED DOWNLOAD CV -->
-            <a href="NV_Jayasri_Resume.pdf" class="btn btn-secondary" download>
-                <i class="fas fa-download"></i> Download CV
-            </a>
-        </div>
-    </section>
+        <section id="education" class="content-section">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="education-item">
+                <h3>5-Year Integrated M.Sc. Data Science</h3>
+                <p><strong>Amrita Vishwa Vidyapeetham, Coimbatore</strong></p>
+                <p>2022 - Present | CGPA: 7.69</p>
+            </div>
 
-    <section id="about" class="content-section">
-        <h2 class="section-title">About Me</h2>
-        <p>
-            Detail-oriented data scientist seeking to apply strong skills in data analysis
-            to uncover actionable insights and support strategic decision-making.
-        </p>
-    </section>
+            <div class="education-item">
+                <h3>Higher Secondary Education</h3>
+                <p><strong>Shree Niketan Patasala</strong></p>
+                <p>Computer Science + Mathematics (CBSE)</p>
+                <p>2020 - 2021 | Percentage: 82%</p>
+            </div>
 
-    <section id="education" class="content-section">
-        <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <h3>Secondary Education</h3>
+                <p><strong>Shree Niketan Patasala</strong></p>
+                <p>CBSE Board</p>
+                <p>2018 - 2019 | Percentage: 89%</p>
+            </div>
+        </section>
 
-        <div class="education-item">
-            <h3>Integrated M.Sc. Data Science</h3>
-            <p>Amrita Vishwa Vidyapeetham, Coimbatore (2022–Present)</p>
-        </div>
+        <section id="projects" class="content-section">
+            <h2 class="section-title">Projects & Research</h2>
+            
+            <div class="project-item">
+                <h3><i class="fas fa-database"></i> Boutique Management Database cum Website</h3>
+                <p>2024 - Developed a comprehensive database management system with web interface for boutique operations</p>
+            </div>
 
-        <div class="education-item">
-            <h3>Higher Secondary (CBSE)</h3>
-            <p>Shree Niketan Patasala – 82%</p>
-        </div>
+            <div class="project-item">
+                <h3><i class="fas fa-shield-alt"></i> Research on Malware Detection System</h3>
+                <p>2025 - Conducted extensive research on advanced malware detection techniques using machine learning</p>
+            </div>
 
-        <div class="education-item">
-            <h3>Secondary (CBSE)</h3>
-            <p>Shree Niketan Patasala – 89%</p>
-        </div>
-    </section>
+            <div class="project-item">
+                <h3><i class="fas fa-chart-line"></i> Exploratory Data Analysis & Geospatial Visualization on Zomato Dataset</h3>
+                <p>2025 - Performed comprehensive EDA and created interactive geospatial visualizations</p>
+            </div>
 
-    <section id="projects" class="content-section">
-        <h2 class="section-title">Projects</h2>
-        <div class="project-item">Boutique Management Database cum Website</div>
-        <div class="project-item">Malware Detection System</div>
-        <div class="project-item">EDA & Geospatial Visualization on Zomato Dataset</div>
-        <div class="project-item">Self-Driven Car for Indian Roads using RL</div>
-    </section>
+            <div class="project-item">
+                <h3><i class="fas fa-car"></i> Self-Driven Car for Indian Roads Using RL</h3>
+                <p>2025 - Developed reinforcement learning model for autonomous navigation in Indian traffic conditions</p>
+            </div>
 
-    <section id="skills" class="content-section">
-        <h2 class="section-title">Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-card">Data Visualization</div>
-            <div class="skill-card">Statistical Analysis</div>
-            <div class="skill-card">Machine Learning</div>
-        </div>
-    </section>
+            <div class="project-item">
+                <h3><i class="fas fa-smog"></i> Time Series Analysis of Carbon Dioxide Emissions</h3>
+                <p>Ongoing - Analyzing temporal patterns and trends in global CO2 emissions data</p>
+            </div>
 
-    <section id="contact" class="content-section">
-        <h2 class="section-title">Contact</h2>
-        <div class="contact-info">
-            <div class="contact-card">📞 +91 73050 96962</div>
-            <div class="contact-card">📧 jayasrinavaneethan2004@gmail.com</div>
-            <div class="contact-card">📍 Chennai, India</div>
-        </div>
-    </section>
+            <div class="project-item">
+                <h3><i class="fas fa-shopping-cart"></i> Market Analysis for a Specific Product</h3>
+                <p>Ongoing - Conducting comprehensive market research and competitive analysis</p>
+            </div>
+        </section>
 
-    <footer>
-        <p>© 2025 NV Jayasri</p>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
-        </div>
-    </footer>
+        <section class="content-section">
+            <h2 class="section-title">Publications (To Be Published)</h2>
+            
+            <div class="project-item">
+                <h3><i class="fas fa-newspaper"></i> Sentiment Analysis in FinBERT for Stock Market Text Data</h3>
+                <p>Using Global News Data to analyze financial sentiment and market trends</p>
+            </div>
 
-</div>
+            <div class="project-item">
+                <h3><i class="fas fa-brain"></i> Enhanced Stock Prediction Using Hybrid LSTM-CNN Algorithm</h3>
+                <p>Explainable AI approach with YFinance Data for transparent stock market predictions</p>
+            </div>
+        </section>
+
+        <section id="skills" class="content-section">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Data Visualization</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Statistical Analysis</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Machine Learning</h3>
+                </div>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 3rem;">Soft Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Leadership</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Crisis Management</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Adaptability</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Receptiveness</h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Asia Book of Record Holder</h3>
+                    <p>Bharatanatyam</p>
+                </div>
+                <div class="achievement-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Guinness World Record Holder</h3>
+                    <p>Bharatanatyam</p>
+                </div>
+                <div class="achievement-card">
+                    <i class="fas fa-star"></i>
+                    <h3>A+ Grade</h3>
+                    <p>Bharatanatyam Grade-Level 3 Exam</p>
+                </div>
+                <div class="achievement-card">
+                    <i class="fas fa-medal"></i>
+                    <h3>3rd Place</h3>
+                    <p>Group Dance, Amritotsavam 2023</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Extracurricular Activities</h2>
+            <div class="project-item">
+                <h3><i class="fas fa-music"></i> Dancer at Natyasudha</h3>
+                <p>Amrita Vishwa Vidyapeetham - Active member of the dance troupe</p>
+            </div>
+        </section>
+
+        <section id="contact" class="content-section">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p>+91 73050 96962</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>jayasrinavaneethan2004@gmail.com</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>Chennai, Tamil Nadu</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 NV Jayasri. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <div class="scroll-to-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        const scrollTop = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        scrollTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
