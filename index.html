@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NV Jayasri - Data Scientist</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #3b82f6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container { max-width: 1200px; margin: auto; padding: 20px; }
+
+        header {
+            background: rgba(255,255,255,0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(37,99,235,.95), rgba(30,64,175,.95));
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+
+        .hero h1 { font-size: 3.5rem; }
+        .hero p { font-size: 1.4rem; margin: 1rem 0 2rem; }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn:hover { transform: translateY(-3px); }
+
+        .content-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .education-item, .project-item {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: var(--light);
+            border-left: 4px solid var(--primary);
+            border-radius: 10px;
+        }
+
+        .skills-grid, .achievements-grid, .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card, .achievement-card, .contact-card {
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            background: var(--light);
+        }
+
+        footer {
+            background: rgba(30,41,59,.95);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            margin-top: 3rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .hero-buttons { flex-direction: column; }
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <nav>
+        <div class="logo">NV JAYASRI</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+
+    <section class="hero">
+        <h1>NV JAYASRI</h1>
+        <p>Data Scientist | Machine Learning Enthusiast | Bharatanatyam World Record Holder</p>
+        <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary">Get In Touch</a>
+
+            <!-- ✅ FIXED DOWNLOAD CV -->
+            <a href="NV_Jayasri_Resume.pdf" class="btn btn-secondary" download>
+                <i class="fas fa-download"></i> Download CV
+            </a>
+        </div>
+    </section>
+
+    <section id="about" class="content-section">
+        <h2 class="section-title">About Me</h2>
+        <p>
+            Detail-oriented data scientist seeking to apply strong skills in data analysis
+            to uncover actionable insights and support strategic decision-making.
+        </p>
+    </section>
+
+    <section id="education" class="content-section">
+        <h2 class="section-title">Education</h2>
+
+        <div class="education-item">
+            <h3>Integrated M.Sc. Data Science</h3>
+            <p>Amrita Vishwa Vidyapeetham, Coimbatore (2022–Present)</p>
+        </div>
+
+        <div class="education-item">
+            <h3>Higher Secondary (CBSE)</h3>
+            <p>Shree Niketan Patasala – 82%</p>
+        </div>
+
+        <div class="education-item">
+            <h3>Secondary (CBSE)</h3>
+            <p>Shree Niketan Patasala – 89%</p>
+        </div>
+    </section>
+
+    <section id="projects" class="content-section">
+        <h2 class="section-title">Projects</h2>
+        <div class="project-item">Boutique Management Database cum Website</div>
+        <div class="project-item">Malware Detection System</div>
+        <div class="project-item">EDA & Geospatial Visualization on Zomato Dataset</div>
+        <div class="project-item">Self-Driven Car for Indian Roads using RL</div>
+    </section>
+
+    <section id="skills" class="content-section">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">Data Visualization</div>
+            <div class="skill-card">Statistical Analysis</div>
+            <div class="skill-card">Machine Learning</div>
+        </div>
+    </section>
+
+    <section id="contact" class="content-section">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-info">
+            <div class="contact-card">📞 +91 73050 96962</div>
+            <div class="contact-card">📧 jayasrinavaneethan2004@gmail.com</div>
+            <div class="contact-card">📍 Chennai, India</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 NV Jayasri</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>
